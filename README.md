@@ -1,21 +1,15 @@
-# AdventOfCode
+# Advent Of Code
 
-**TODO: Add description**
+[Advent of Code][1] is an Advent calendar of small programming puzzles for a
+variety of skill sets and skill levels that can be solved in any programming
+language you like.
 
-## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `advent_of_code` to your list of dependencies in `mix.exs`:
+## Who solved these puzzles?
 
-```elixir
-def deps do
-  [
-    {:advent_of_code, "~> 0.1.0"}
-  ]
-end
-```
+These were solved by Arturo Herrero under the MIT License. Find me on Twitter
+[@ArturoHerrero][2].
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/advent_of_code](https://hexdocs.pm/advent_of_code).
 
+[1]: https://adventofcode.com/
+[2]: https://twitter.com/ArturoHerrero
