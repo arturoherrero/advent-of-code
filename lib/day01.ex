@@ -2,13 +2,13 @@
 defmodule Day01 do
   def final_frequency(stream) do
     stream
-    |> map_to_integer
-    |> Enum.sum
+    |> map_to_integer()
+    |> Enum.sum()
   end
 
   def frequency_reached_twice(stream) do
     stream
-    |> map_to_integer
+    |> map_to_integer()
     |> Stream.cycle()
     |> Enum.reduce_while({0, []}, fn x, {current_frequency, history_frequencies} ->
       new_frequency = current_frequency + x
