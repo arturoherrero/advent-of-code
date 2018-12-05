@@ -15,6 +15,43 @@ defmodule Day02 do
     twice * thrice
   end
 
+  def correct_box_id(stream) do
+    stream
+    |> Enum.map(fn line -> String.trim(line) end)
+    |> closest_string()
+  end
+
+  def closest_string([head | tail]) do
+    Enum.find_value(tail, &one_different_char(&1, head)) || closest_string(tail)
+  end
+
+  def one_different_char(string1, string2) do
+    take_same_chars(string1, string2)
+    |> (fn string ->
+      if String.length(string) == String.length(string1) - 1, do: string
+    end).()
+  end
+
+  @doc """
+  Take same characters for two given strings.
+
+  ## Examples
+
+      iex> Day02.take_same_chars("fghij", "fguij")
+      "fgij"
+
+      iex> Day02.take_same_chars("axcye", "fguij")
+      ""
+
+  """
+  def take_same_chars(string1, string2) do
+    Enum.zip(String.graphemes(string1), String.graphemes(string2))
+    |> Enum.reduce([], fn {char1, char2}, acc ->
+      if char1 == char2, do: [acc ++ [char1]], else: acc
+    end)
+    |> Enum.join()
+  end
+
   @doc """
   Char occurrences for a given string.
 

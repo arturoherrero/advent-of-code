@@ -13,4 +13,18 @@ defmodule Day02Test do
 
     assert Day02.checksum(stream) == 6
   end
+
+  test "correct_box_id/1" do
+    stream = [
+      "abcde\n",
+      "fghij\n",
+      "klmno\n",
+      "pqrst\n",
+      "fguij\n",
+      "axcye\n",
+      "wvxyz\n",
+    ]
+
+    assert Day02.correct_box_id(stream) == "fgij"
+  end
 end
