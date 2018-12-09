@@ -21,11 +21,11 @@ defmodule Day02 do
     |> closest_string()
   end
 
-  def closest_string([head | tail]) do
+  defp closest_string([head | tail]) do
     Enum.find_value(tail, &one_different_char(&1, head)) || closest_string(tail)
   end
 
-  def one_different_char(string1, string2) do
+  defp one_different_char(string1, string2) do
     take_same_chars(string1, string2)
     |> (fn string ->
       if String.length(string) == String.length(string1) - 1, do: string
