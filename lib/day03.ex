@@ -3,7 +3,7 @@ defmodule Day03 do
   def square_inches_multi_claimed(list) do
     list
     |> Enum.reduce(squares_fabric(), fn line, squares_fabric ->
-      [id, x, y, width, height] = parse_claim(line)
+      [_, x, y, width, height] = parse_claim(line)
 
       Enum.reduce(x..(x + width - 1), squares_fabric, fn i, squares_fabric ->
         Enum.reduce(y..(y + height - 1), squares_fabric, fn j, squares_fabric ->
