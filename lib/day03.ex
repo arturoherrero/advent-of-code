@@ -1,19 +1,41 @@
 # --- Day 3: No Matter How You Slice It ---
 defmodule Day03 do
   def square_inches_multi_claimed(list) do
-    list
-    |> Enum.reduce(squares_fabric(), fn line, squares_fabric ->
-      [_, x, y, width, height] = parse_claim(line)
-
-      Enum.reduce(x..(x + width - 1), squares_fabric, fn i, squares_fabric ->
-        Enum.reduce(y..(y + height - 1), squares_fabric, fn j, squares_fabric ->
-          Matrix.set(squares_fabric, i, j, Matrix.get(squares_fabric, i, j) + 1)
-        end)
-      end)
-    end)
+    fabric_with_claims(list)
     |> Enum.reduce(0, fn fabric_line, count ->
       count + Enum.reduce(fabric_line, 0, fn fabric_square, count ->
         if fabric_square > 1, do: count + 1, else: count
+      end)
+    end)
+  end
+
+  def claim_id_not_overlapping(list) do
+    list
+    |> Enum.reduce([nil, fabric_with_claims(list)], fn line, [id, fabric] ->
+      [current_id, x, y, width, height] = parse_claim(line)
+
+      {overlapping_claim, fabric} = Enum.reduce(x..(x + width - 1), {false, fabric}, fn i, {overlapping_claim, fabric} ->
+        Enum.reduce(y..(y + height - 1), {overlapping_claim, fabric}, fn j, {overlapping_claim, fabric} ->
+          overlapping_claim = if overlapping_claim || Matrix.get(fabric, i, j) > 1, do: true, else: overlapping_claim
+          {overlapping_claim, fabric}
+        end)
+      end)
+
+      id = if overlapping_claim, do: id, else: current_id
+      [id, fabric]
+    end)
+    |> List.first
+  end
+
+  defp fabric_with_claims(list) do
+    list
+    |> Enum.reduce(initial_fabric(), fn line, fabric ->
+      [_, x, y, width, height] = parse_claim(line)
+
+      Enum.reduce(x..(x + width - 1), fabric, fn i, fabric ->
+        Enum.reduce(y..(y + height - 1), fabric, fn j, fabric ->
+          Matrix.set(fabric, i, j, Matrix.get(fabric, i, j) + 1)
+        end)
       end)
     end)
   end
@@ -33,7 +55,7 @@ defmodule Day03 do
     |> Enum.map(&String.to_integer(&1))
   end
 
-  defp squares_fabric do
+  defp initial_fabric do
     Matrix.create(1000, 1000)
   end
 end
