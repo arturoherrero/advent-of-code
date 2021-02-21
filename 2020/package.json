@@ -1,0 +1,17 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "Advent Of Code",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "eslint src",
+    "test": "jest"
+  },
+  "author": "Arturo Herrero",
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "jest": "^26.6.3"
+  }
+}
