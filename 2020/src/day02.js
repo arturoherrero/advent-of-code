@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 
-const input = fs.readFileSync('input/day02.txt').toString('utf-8');
+const input = fs.readFileSync('input/day02.txt', 'utf-8');
 const inputArray = input.match(/[^\r\n]+/g);
 
 const countValidPasswords = (array) => array.reduce((total, entry) => {

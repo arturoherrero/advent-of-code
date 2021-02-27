@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 
-const input = fs.readFileSync('input/day01.txt').toString('utf-8');
+const input = fs.readFileSync('input/day01.txt', 'utf-8');
 const inputArray = input.split('\n');
 
 const findTwoSum2020AndMultiply = (array) => {
