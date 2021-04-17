@@ -1,9 +1,7 @@
 /* eslint-disable */
 
-const fs = require('fs');
-
-const input = fs.readFileSync('input/day02.txt', 'utf-8');
-const inputArray = input.match(/[^\r\n]+/g);
+const { readInput } = require('./utils.js');
+const inputArray = readInput('input/day02.txt');
 
 const countValidPasswords = (array) => array.reduce((total, entry) => {
   const [policy, letterPrompt, password] = entry.split(' ');

@@ -1,9 +1,7 @@
 /* eslint-disable */
 
-const fs = require('fs');
-
-const input = fs.readFileSync('input/day01.txt', 'utf-8');
-const inputArray = input.split('\n');
+const { readInput } = require('./utils.js');
+const inputArray = readInput('input/day01.txt');
 
 const findTwoSum2020AndMultiply = (array) => {
   loop:
